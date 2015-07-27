@@ -21,8 +21,13 @@ class Common extends CI_Controller {
 	private function setBase() {
 		// URI 파라메터 정의
 		$this->param			= $this->uri->uri_to_assoc();
-		$this->param['class']	= $this->uri->segment(1) ? $this->uri->segment(1) : 'main';
-		$this->param['method']	= $this->uri->segment(2) ? $this->uri->segment(2) : 'index';
+		if($this->uri->segment(1) == 'admin') :
+			$this->param['class']	= $this->uri->segment(2) ? $this->uri->segment(2) : 'main';
+			$this->param['method']	= $this->uri->segment(3) ? $this->uri->segment(3) : 'index';
+		else :
+			$this->param['class']	= $this->uri->segment(1) ? $this->uri->segment(1) : 'main';
+			$this->param['method']	= $this->uri->segment(2) ? $this->uri->segment(2) : 'index';
+		endif;
 
 		// 사이트 기본 정보 설정
 		$this->site		= array('root'=>'', 'title'=>'site title', 'csstheme'=>'cosmo', 'layout'=>'default');

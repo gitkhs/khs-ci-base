@@ -6,6 +6,7 @@ class Main extends Common {
 	function __construct()
 	{
 		parent::__construct();
+		$this->site['layout']		= 'admin';
 	}
 
 	//
@@ -15,20 +16,15 @@ class Main extends Common {
  		if( method_exists($this, $method) ) {
 			$this->{"{$method}"}();
 		}
- 		$this->load->view('default', $this);
+ 		$this->load->view('admin', $this);
 	}
 
 	public function index()
 	{
-// 		$query = $this->db->query('SELECT ci_name, ci_title FROM ci_test');
-		
-// 		foreach ($query->result() as $row)
-// 		{
-// 			echo $row->ci_title;
-// 			echo $row->ci_name;
-// 			echo '<br/>';
-// 		}
-		
-// 		echo 'Total Results: ' . $query->num_rows();		
+		$this->site['cover']	= true;
+	}
+
+	public function dashboard()
+	{
 	}
 }

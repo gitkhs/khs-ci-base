@@ -53,4 +53,6 @@ $route['default_controller'] = 'main';
 $route['404_override'] = '';
 // $route['translate_uri_dashes'] = FALSE;
 
-$route['goods/(:any)'] = "goods/index";
+// 관리자 페이지 설정
+$route['admin'] = "admin/main/index";
+$route['admin/main'] = "admin/main/main_index";
